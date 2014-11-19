@@ -1,0 +1,36 @@
+<!-- 联系人 -->
+<ion-view title="联系人">
+
+    <ion-nav-buttons side="left">
+        <button class="button  button-clear  button-dark" >
+            编辑
+        </button>
+    </ion-nav-buttons>
+
+
+
+    <ion-nav-buttons side="right">
+        <a class="button button-icon icon ion-ios7-plus-empty" href="#/tab/contacts/add" ></a>
+    </ion-nav-buttons>
+
+
+    <ion-content class="">
+
+        <ion-list>
+            <div ng-repeat="contact in contactList">
+                <div class="item item-divider">
+                   A
+                </div>
+
+                <a class="item item-avatar" href="#">
+                    <img src="img/venkman.jpg">
+                    <h2>周xxx</h2>
+                    <p>神秘人物....</p>
+                </a>
+
+            </div>
+        </ion-list>
+
+    </ion-content>
+</ion-view>
+

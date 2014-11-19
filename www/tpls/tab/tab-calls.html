@@ -1,0 +1,21 @@
+<!-- 最近通话 -->
+<ion-view title="最近通话">
+    <ion-content class="">
+        <ion-list>
+            <ion-item ng-repeat="call in callList" class="">
+                    {{call.userName}}
+                    <div>
+                        <span>{{call.local}}</span>
+                        <span>{{call.operators}}</span>
+                        <span class="item-note">
+                           {{call.lastCallTime}}
+                       </span>
+                    </div>
+
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+
+</ion-view>
+
