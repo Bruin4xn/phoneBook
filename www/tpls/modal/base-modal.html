@@ -1,22 +1,17 @@
+
 <ion-modal-view>
     <ion-header-bar>
         <button class="button  button-clear  button-dark" ng-click="closeModal();">
             取消
         </button>
 
-        <h1 class="title">新建联系人</h1>
+        <h1 class="title">{{title}}</h1>
         <button class="button  button-clear  button-dark">
-            完成
+
         </button>
     </ion-header-bar>
     <ion-content>
-
+        <div ng-transclude></div>
     </ion-content>
 </ion-modal-view>
 
-
-<!--<my-modal title="测试头部">-->
-<!--<div>-->
-<!--里面的内容怎么没动画了-->
-<!--</div>-->
-<!--</my-modal>-->

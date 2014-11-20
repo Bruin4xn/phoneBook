@@ -24,10 +24,14 @@ var controlModule = angular.module("phoneBook.controllers",[]);
             {"userName" : "周宁静", "local" : "陕西西安", "operators" : "电信",lastCallTime : "昨天"}
         ];
 
+
+
+
+
     });
 
     //联系人
-    controlModule.controller("contactCtrl",function($scope){
+    controlModule.controller("contactCtrl",function($scope,utilService){
         $scope.contactList =  [
             {"userName" : "周宁静", "local" : "陕西西安", "operators" : "电信",lastCallTime : "昨天"},
             {"userName" : "周宁静", "local" : "陕西西安", "operators" : "电信",lastCallTime : "昨天"},
@@ -46,6 +50,9 @@ var controlModule = angular.module("phoneBook.controllers",[]);
             {"userName" : "周宁静", "local" : "陕西西安", "operators" : "电信",lastCallTime : "昨天"},
             {"userName" : "周宁静", "local" : "陕西西安", "operators" : "电信",lastCallTime : "昨天"}
         ];
+
+        //初始化modal
+        utilService.modal($scope,"tpls/contact/add-contact.html");
 
     });
 

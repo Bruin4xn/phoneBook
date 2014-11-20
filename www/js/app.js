@@ -1,4 +1,4 @@
-var  phoneBook = angular.module("phoneBook",["ionic","phoneBook.controllers"]);
+var  phoneBook = angular.module("phoneBook",["ionic","phoneBook.controllers","phoneBook.services"]);
 
 //初始化一次
 phoneBook.run(function($ionicPlatform){
@@ -58,17 +58,27 @@ phoneBook.config(function($stateProvider, $urlRouterProvider){
 
 
     //新建联系人
-    $stateProvider.state("tab.contacts-add",{
-        url : "/contacts/add",
-        views : {
-            'tab-contacts' : {
-                templateUrl  : "tpls/contact/add-contact.html",
-                controller : ""
-            }
-        }
+    $stateProvider.state("contacts",{
+        url : "/contacts",
+        templateUrl  : "tpls/contact/add-contact.html"
+
     });
 
 
     //默认路由
     $urlRouterProvider.otherwise('/tab/calls');
+});
+
+
+//配置指令
+phoneBook.directive("myModal",function(){
+    return {
+        restrict: "AE",
+        templateUrl : "tpls/modal/base-modal.html",
+        transclude: true,
+
+        link : function(scope,element,attrs){
+             scope.title = attrs.title;
+        }
+    }
 });

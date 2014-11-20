@@ -1,6 +1,7 @@
 <!-- 联系人 -->
 <ion-view title="联系人">
 
+
     <ion-nav-buttons side="left">
         <button class="button  button-clear  button-dark" >
             编辑
@@ -10,12 +11,11 @@
 
 
     <ion-nav-buttons side="right">
-        <a class="button button-icon icon ion-ios7-plus-empty" href="#/tab/contacts/add" ></a>
+        <a class="button button-icon icon ion-ios7-plus-empty"  ng-click="openModal();" ></a>
     </ion-nav-buttons>
 
 
     <ion-content class="">
-
         <ion-list>
             <div ng-repeat="contact in contactList">
                 <div class="item item-divider">
@@ -32,5 +32,12 @@
         </ion-list>
 
     </ion-content>
+
+
 </ion-view>
+
+
+
+
+
 
