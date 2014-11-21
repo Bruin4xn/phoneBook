@@ -1,22 +1,54 @@
 <ion-modal-view>
+    <form   novalidate name="addContactForm">
     <ion-header-bar>
         <button class="button  button-clear  button-dark" ng-click="closeModal();">
             取消
         </button>
 
         <h1 class="title">新建联系人</h1>
-        <button class="button  button-clear  button-dark">
+        <button   class="button  button-clear  button-dark" ng-disabled="addContactForm.$invalid" ng-click="subUser();">
             完成
         </button>
     </ion-header-bar>
     <ion-content>
+        <!-- 基本信息 -->
+        <div class="list">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">姓氏</span>
+                <input type="text" placeholder="张" ng-model="contactObj.surname" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">名字</span>
+                <input type="text" placeholder="小明" ng-model="contactObj.userName" required>
+            </label>
+            <label class="item item-input item-stacked-label">
+                <span class="input-label">公司</span>
+                <input type="text" placeholder="...有限公司" ng-model="contactObj.company" required>
+            </label>
+        </div>
+
+            <!-- 电话 -->
+            <ion-list  show-delete="showDelete">
+                <ion-item ng-repeat="item in contactObj.phoneList" class="animated-item item-input pdl6">
+                    <select class="select-custrom mgr10" ng-model="item.phoneType" required>
+                        <option value="iphone">iphone</option>
+                        <option selected>主要</option>
+                        <option>学校</option>
+                        <option>家里</option>
+                        <option>外地</option>
+                    </select>
+                    <input type="text" placeholder="电话号码"   ng-model="item.phoneNum" class="" required/>
+                    <div class="item-note mgr10">
+                        <a class="button button-small button-assertive"
+                           ng-click="contactObj.phoneList.splice($index, 1)">
+                           删除
+                        </a>
+                    </div>
+                </ion-item>
+            </ion-list>
+            <button class="button-full button button-small button-positive" ng-click="addItem()"  >添加电话</button>
 
     </ion-content>
+    </form>
 </ion-modal-view>
 
-
-<!--<my-modal title="测试头部">-->
-<!--<div>-->
-<!--里面的内容怎么没动画了-->
-<!--</div>-->
-<!--</my-modal>-->
