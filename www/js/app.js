@@ -1,7 +1,7 @@
 var  phoneBook = angular.module("phoneBook",["ionic","phoneBook.controllers","phoneBook.services"]);
 
 //初始化一次
-phoneBook.run(function($ionicPlatform){
+phoneBook.run(function($rootScope,$ionicPlatform,$timeout){
     $ionicPlatform.ready(function(){
         if(window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -11,6 +11,52 @@ phoneBook.run(function($ionicPlatform){
             StatusBar.styleDefault();
         }
     });
+
+
+
+    //全局提示信息
+    var lockAlert = {
+        show : function(message,title){
+
+            $rootScope.lockalert  = {
+                message : message,
+                title   : title || "提示"
+            }
+
+            if(!$rootScope.lockalert.isshow){
+                $rootScope.lockalert.isshow = true;
+            }
+
+            var tm = $timeout(function(){
+
+                $timeout.cancel(tm);
+
+                //关闭显示
+                $rootScope.lockalert.isshow = false;
+
+            },2000);
+
+            tm.then(function(){
+
+            });
+
+
+        },
+        hide : function(){
+            $rootScope.lockalert  = {
+                message : "",
+                title   : "提示"
+            }
+            $rootScope.lockalert.isshow = false;
+        },
+        toggle : function(){
+            $rootScope.lockalert.isshow = !$rootScope.lockalert.isshow;
+        }
+    };
+
+    //暴露全局方法
+    $rootScope.lockalert = lockAlert;
+
 });
 
 //配置
@@ -81,9 +127,12 @@ phoneBook.directive("lockAlert",function(){
         restrict: "AE",
         templateUrl : "tpls/modal/lock-alert.html",
         transclude: false,
+        replace : true,
+        scope : {
+
+        },
         link : function(scope,element,attrs){
-            scope.title = attrs.title;
-            scope.content = attrs.content;
+
         }
     }
 });

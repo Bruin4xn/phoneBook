@@ -9,13 +9,19 @@
     </ion-nav-buttons>
 
 
-
     <ion-nav-buttons side="right">
         <a class="button button-icon icon ion-ios7-plus-empty"  ng-click="openModal();" ></a>
     </ion-nav-buttons>
 
 
     <ion-content class="">
+        <ion-refresher
+                pulling-icon="ion-arrow-down-a"
+                refreshing-icon="ion-loading-c"
+                on-refresh="hardRefresh()">
+        </ion-refresher>
+
+
         <ion-list>
             <div ng-repeat="contact in contactList">
                 <div class="item item-divider">

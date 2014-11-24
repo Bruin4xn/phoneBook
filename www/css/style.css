@@ -52,6 +52,19 @@
 
 
 
+/* 关闭动画 */
+
+.animate-hide {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+    opacity:1;
+}
+
+.animate-hide.ng-hide {
+    opacity:0;
+}
+
+
 /* 警告框 */
 .lock-alert{
     padding: 15px;
@@ -60,8 +73,10 @@
   
 
     position: absolute;
-    top: 46px;
+    top: 44px;
     width: 100%;
+    z-index: 9999;
+
     /*text-align: center;*/
 }
 
@@ -71,5 +86,3 @@
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
-
-.lock-alert

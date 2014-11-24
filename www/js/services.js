@@ -1,7 +1,7 @@
 angular.module("phoneBook.services",[])
 
 //工具类service
-.factory("utilService",["$ionicModal",function($ionicModal){
+.factory("utilService",function($rootScope,$ionicModal){
 
     var  modal = function($scope,templateUrl){
         //初始化model
@@ -31,9 +31,33 @@ angular.module("phoneBook.services",[])
         $scope.$on('modal.removed', function() {
             // Execute action
         });
-    }
-    return {
-       "modal" : modal
     };
 
-}]);
+
+
+        var  lg = {
+            get : function(key){
+                return localStorage.getItem(key);
+            },
+            put : function(key,value){
+                localStorage.setItem(key,value);
+                return this;
+            },
+            getObj : function(key){
+                if(localStorage.getItem(key)){
+                    return JSON.parse(localStorage.getItem(key));
+                }
+                return null;
+            },
+            putObj : function(key,obj){
+                localStorage.setItem(key,JSON.stringify(obj));
+                return this;
+            }
+        };
+
+    return {
+       "modal" : modal,
+        "lg"   : lg
+    };
+
+});
