@@ -3,7 +3,6 @@ angular.module("phoneBook.services",[])
 //工具类service
 .factory("utilService",["$ionicModal",function($ionicModal){
 
-    //
     var  modal = function($scope,templateUrl){
         //初始化model
         $ionicModal.fromTemplateUrl(templateUrl,{
@@ -33,8 +32,6 @@ angular.module("phoneBook.services",[])
             // Execute action
         });
     }
-
-
     return {
        "modal" : modal
     };

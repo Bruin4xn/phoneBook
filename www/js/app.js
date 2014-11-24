@@ -56,15 +56,6 @@ phoneBook.config(function($stateProvider, $urlRouterProvider){
     });
 
 
-
-    //新建联系人
-    $stateProvider.state("contacts",{
-        url : "/contacts",
-        templateUrl  : "tpls/contact/add-contact.html"
-
-    });
-
-
     //默认路由
     $urlRouterProvider.otherwise('/tab/calls');
 });
@@ -79,6 +70,20 @@ phoneBook.directive("myModal",function(){
 
         link : function(scope,element,attrs){
              scope.title = attrs.title;
+        }
+    }
+});
+
+
+//配置全局验证alert
+phoneBook.directive("lockAlert",function(){
+    return {
+        restrict: "AE",
+        templateUrl : "tpls/modal/lock-alert.html",
+        transclude: false,
+        link : function(scope,element,attrs){
+            scope.title = attrs.title;
+            scope.content = attrs.content;
         }
     }
 });
